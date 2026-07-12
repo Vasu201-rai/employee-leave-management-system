@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee List</title>
+</head>
+<body>
+    <h1>Employee List</h1>
+    <form method="GET">
+    <input type="text" name="q" placeholder="Search by Name or Employee ID" value="{{ query }}">
+    <button type="submit">Search</button>
+    </form>
+    <a href="{% url 'employee_add' %}">+ Add New Employee</a>
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Mobile</th>
+            <th>Date of Joining</th>
+            <th>Actions</th>
+        </tr>
+        {% for emp in employees %}
+        <tr>
+            <td>{{ emp.employee_id }}</td>
+            <td>{{ emp.name }}</td>
+            <td>{{ emp.email }}</td>
+            <td>{{ emp.department }}</td>
+            <td>{{ emp.mobile_number }}</td>
+            <td>{{ emp.date_of_joining }}</td>
+            <td>
+                <a href="{% url 'employee_update' emp.pk %}">Edit</a> |
+                <a href="{% url 'employee_delete' emp.pk %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

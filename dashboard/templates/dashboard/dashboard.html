@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Leave Management Dashboard</h1>
+    <ul>
+        <li>Total Employees: {{ total_employees }}</li>
+        <li>Total Leave Applications: {{ total_leaves }}</li>
+        <li>Pending: {{ pending_count }}</li>
+        <li>Approved: {{ approved_count }}</li>
+        <li>Rejected: {{ rejected_count }}</li>
+    </ul>
+    <a href="{% url 'employee_list' %}">Go to Employees</a> |
+    <a href="{% url 'leave_list' %}">Go to Leaves</a>
+</body>
+</html>
