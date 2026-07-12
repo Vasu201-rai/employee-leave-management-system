@@ -1,13 +1,26 @@
 {% extends 'base.html' %}
 {% block title %}Login{% endblock %}
 {% block content %}
-<h1>Login</h1>
-{% if form.errors %}
-<div class="alert alert-danger">Invalid username or password.</div>
-{% endif %}
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
+<div class="d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="card shadow-sm" style="width: 100%; max-width: 400px;">
+        <div class="card-body p-4">
+            <h3 class="text-center mb-4">Login</h3>
+            {% if form.errors %}
+            <div class="alert alert-danger">Invalid username or password.</div>
+            {% endif %}
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    {{ form.username }}
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    {{ form.password }}
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
