@@ -1,39 +1,49 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Employee List</title>
-</head>
-<body>
-    <h1>Employee List</h1>
-    <form method="GET">
-    <input type="text" name="q" placeholder="Search by Name or Employee ID" value="{{ query }}">
-    <button type="submit">Search</button>
-    </form>
-    <a href="{% url 'employee_add' %}">+ Add New Employee</a>
-    <table border="1" cellpadding="8">
-        <tr>
-            <th>Employee ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Department</th>
-            <th>Mobile</th>
-            <th>Date of Joining</th>
-            <th>Actions</th>
-        </tr>
-        {% for emp in employees %}
-        <tr>
-            <td>{{ emp.employee_id }}</td>
-            <td>{{ emp.name }}</td>
-            <td>{{ emp.email }}</td>
-            <td>{{ emp.department }}</td>
-            <td>{{ emp.mobile_number }}</td>
-            <td>{{ emp.date_of_joining }}</td>
-            <td>
-                <a href="{% url 'employee_update' emp.pk %}">Edit</a> |
-                <a href="{% url 'employee_delete' emp.pk %}">Delete</a>
-            </td>
-        </tr>
-        {% endfor %}
-    </table>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Employee List{% endblock %}
+{% block content %}
+<h1>Employee List</h1>
+<a href="{% url 'employee_add' %}" class="btn btn-primary mb-3">+ Add New Employee</a>
+
+<form method="GET" class="mb-3">
+    <input type="text" name="q" class="form-control" style="width:300px; display:inline-block;" placeholder="Search by Name or Employee ID" value="{{ query }}">
+    <button type="submit" class="btn btn-secondary">Search</button>
+</form>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>Employee ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Department</th>
+        <th>Mobile</th>
+        <th>Date of Joining</th>
+        <th>Actions</th>
+    </tr>
+    {% for emp in employees %}
+    <tr>
+        <td>{{ emp.employee_id }}</td>
+        <td>{{ emp.name }}</td>
+        <td>{{ emp.email }}</td>
+        <td>{{ emp.department }}</td>
+        <td>{{ emp.mobile_number }}</td>
+        <td>{{ emp.date_of_joining }}</td>
+        <td>
+            <a href="{% url 'employee_update' emp.pk %}" class="btn btn-sm btn-warning">Edit</a>
+            <a href="{% url 'employee_delete' emp.pk %}" class="btn btn-sm btn-danger">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<nav>
+    <ul class="pagination">
+        {% if employees.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page={{ employees.previous_page_number }}">Previous</a></li>
+        {% endif %}
+        <li class="page-item disabled"><span class="page-link">Page {{ employees.number }} of {{ employees.paginator.num_pages }}</span></li>
+        {% if employees.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ employees.next_page_number }}">Next</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock %}

@@ -1,18 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dashboard</title>
-</head>
-<body>
-    <h1>Leave Management Dashboard</h1>
-    <ul>
-        <li>Total Employees: {{ total_employees }}</li>
-        <li>Total Leave Applications: {{ total_leaves }}</li>
-        <li>Pending: {{ pending_count }}</li>
-        <li>Approved: {{ approved_count }}</li>
-        <li>Rejected: {{ rejected_count }}</li>
-    </ul>
-    <a href="{% url 'employee_list' %}">Go to Employees</a> |
-    <a href="{% url 'leave_list' %}">Go to Leaves</a>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Leave Management Dashboard</h1>
+<div class="row mt-4">
+    <div class="col-md-2">
+        <div class="card text-center p-3 bg-light">
+            <h5>Total Employees</h5>
+            <h2>{{ total_employees }}</h2>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card text-center p-3 bg-light">
+            <h5>Total Leaves</h5>
+            <h2>{{ total_leaves }}</h2>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card text-center p-3 bg-warning">
+            <h5>Pending</h5>
+            <h2>{{ pending_count }}</h2>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card text-center p-3 bg-success text-white">
+            <h5>Approved</h5>
+            <h2>{{ approved_count }}</h2>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="card text-center p-3 bg-danger text-white">
+            <h5>Rejected</h5>
+            <h2>{{ rejected_count }}</h2>
+        </div>
+    </div>
+</div>
+{% endblock %}

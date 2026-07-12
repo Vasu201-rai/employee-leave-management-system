@@ -1,7 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Leave
 from .forms import LeaveForm
+from django.contrib.auth.decorators import login_required
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
+from .serializers import LeaveSerializer
 
+
+@login_required
 def leave_list(request):
     status_filter = request.GET.get('status', '')
     type_filter = request.GET.get('leave_type', '')
@@ -18,6 +26,8 @@ def leave_list(request):
         'type_filter': type_filter,
     })
 
+
+@login_required
 def leave_add(request):
     if request.method == 'POST':
         form = LeaveForm(request.POST)
@@ -28,6 +38,8 @@ def leave_add(request):
         form = LeaveForm()
     return render(request, 'leaves/leave_form.html', {'form': form})
 
+
+@login_required
 def leave_update(request, pk):
     leave = get_object_or_404(Leave, pk=pk)
     if request.method == 'POST':
@@ -39,6 +51,8 @@ def leave_update(request, pk):
         form = LeaveForm(instance=leave)
     return render(request, 'leaves/leave_form.html', {'form': form})
 
+
+@login_required
 def leave_delete(request, pk):
     leave = get_object_or_404(Leave, pk=pk)
     if request.method == 'POST':
@@ -46,12 +60,10 @@ def leave_delete(request, pk):
         return redirect('leave_list')
     return render(request, 'leaves/leave_confirm_delete.html', {'leave': leave})
 
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from .serializers import LeaveSerializer
 
 class LeaveListCreateAPI(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self, request):
         leaves = Leave.objects.all()
         serializer = LeaveSerializer(leaves, many=True)
@@ -66,6 +78,8 @@ class LeaveListCreateAPI(APIView):
 
 
 class LeaveDetailAPI(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get_object(self, pk):
         return get_object_or_404(Leave, pk=pk)
 

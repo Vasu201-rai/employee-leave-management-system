@@ -2,8 +2,18 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Employee
 from .forms import EmployeeForm
 from django.db import models
+from django.contrib.auth.decorators import login_required
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.permissions import IsAuthenticated
+from .serializers import EmployeeSerializer
+from django.core.paginator import Paginator
 
 
+
+
+@login_required
 def employee_list(request):
     query = request.GET.get('q', '')
     employees = Employee.objects.all()
@@ -13,8 +23,14 @@ def employee_list(request):
             models.Q(name__icontains=query) | models.Q(employee_id__icontains=query)
         )
 
-    return render(request, 'employees/employee_list.html', {'employees': employees, 'query': query})
+    paginator = Paginator(employees, 5)  # 5 employees per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
+    return render(request, 'employees/employee_list.html', {'employees': page_obj, 'query': query})
+
+
+@login_required
 def employee_add(request):
     if request.method == 'POST':
         form = EmployeeForm(request.POST)
@@ -25,6 +41,8 @@ def employee_add(request):
         form = EmployeeForm()
     return render(request, 'employees/employee_form.html', {'form': form})
 
+
+@login_required
 def employee_update(request, pk):
     employee = get_object_or_404(Employee, pk=pk)
     if request.method == 'POST':
@@ -36,6 +54,8 @@ def employee_update(request, pk):
         form = EmployeeForm(instance=employee)
     return render(request, 'employees/employee_form.html', {'form': form})
 
+
+@login_required
 def employee_delete(request, pk):
     employee = get_object_or_404(Employee, pk=pk)
     if request.method == 'POST':
@@ -43,12 +63,10 @@ def employee_delete(request, pk):
         return redirect('employee_list')
     return render(request, 'employees/employee_confirm_delete.html', {'employee': employee})
 
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from .serializers import EmployeeSerializer
 
 class EmployeeListCreateAPI(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self, request):
         employees = Employee.objects.all()
         serializer = EmployeeSerializer(employees, many=True)
@@ -63,6 +81,8 @@ class EmployeeListCreateAPI(APIView):
 
 
 class EmployeeDetailAPI(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get_object(self, pk):
         return get_object_or_404(Employee, pk=pk)
 

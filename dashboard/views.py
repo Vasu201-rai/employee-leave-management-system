@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from employees.models import Employee
 from leaves.models import Leave
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def dashboard_view(request):
     total_employees = Employee.objects.count()
     total_leaves = Leave.objects.count()

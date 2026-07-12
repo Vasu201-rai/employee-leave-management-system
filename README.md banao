@@ -1,0 +1,24 @@
+# Employee Leave Management System
+
+A full-stack web application to digitize employee leave approval process, built with Django, Django REST Framework, and MySQL.
+
+## Features
+- Employee Management (Add/View/Update/Delete)
+- Leave Management (Apply/View/Edit/Delete) with status tracking (Pending/Approved/Rejected)
+- Dashboard with live counts (Total Employees, Total Leaves, Pending, Approved, Rejected)
+- Search employees by Name or Employee ID
+- Filter leaves by Status and Leave Type
+- REST APIs for Employee and Leave modules (GET, POST, PUT, DELETE)
+- User Authentication (Login/Logout) with protected views and APIs
+- Pagination on Employee and Leave lists
+- Bootstrap-based responsive UI
+
+## Tech Stack
+- Python 3, Django, Django REST Framework
+- MySQL Database
+- HTML, CSS, Bootstrap 5
+- Git & GitHub
+
+## Setup Instructions
+
+1. Clone the repository

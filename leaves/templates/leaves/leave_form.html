@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Leave Form</title>
-</head>
-<body>
-    <h1>{% if form.instance.pk %}Update{% else %}Apply{% endif %} Leave</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save</button>
-    </form>
-    <a href="{% url 'leave_list' %}">Back to List</a>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Leave Form{% endblock %}
+{% block content %}
+<h1>{% if form.instance.pk %}Update{% else %}Apply{% endif %} Leave</h1>
+{% if form.non_field_errors %}
+<div class="alert alert-danger">{{ form.non_field_errors }}</div>
+{% endif %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="{% url 'leave_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

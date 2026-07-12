@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Delete Employee</title>
-</head>
-<body>
-    <h1>Are you sure you want to delete {{ employee.name }}?</h1>
-    <form method="POST">
-        {% csrf_token %}
-        <button type="submit">Yes, Delete</button>
-        <a href="{% url 'employee_list' %}">Cancel</a>
-    </form>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Delete Employee{% endblock %}
+{% block content %}
+<h1>Are you sure you want to delete {{ employee.name }}?</h1>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a href="{% url 'employee_list' %}" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}
