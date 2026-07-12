@@ -1,74 +1,50 @@
 [
-  {
-    "model": "employees.employee",
-    "pk": 1,
-    "fields": {
-      "employee_id": "EMP101",
-      "name": "Rahul Sharma",
-      "email": "rahul@example.com",
-      "department": "IT",
-      "mobile_number": "9876543210",
-      "date_of_joining": "2024-01-15"
-    }
-  },
-  {
-    "model": "employees.employee",
-    "pk": 2,
-    "fields": {
-      "employee_id": "EMP102",
-      "name": "Priya Singh",
-      "email": "priya@example.com",
-      "department": "HR",
-      "mobile_number": "9876543211",
-      "date_of_joining": "2024-02-10"
-    }
-  },
-  {
-    "model": "employees.employee",
-    "pk": 3,
-    "fields": {
-      "employee_id": "EMP103",
-      "name": "Amit Kumar",
-      "email": "amit@example.com",
-      "department": "Sales",
-      "mobile_number": "9876543212",
-      "date_of_joining": "2024-03-05"
-    }
-  },
-  {
-    "model": "leaves.leave",
-    "pk": 1,
-    "fields": {
-      "employee": 1,
-      "leave_type": "Casual",
-      "from_date": "2026-07-15",
-      "to_date": "2026-07-17",
-      "reason": "Family function",
-      "status": "Pending"
-    }
-  },
-  {
-    "model": "leaves.leave",
-    "pk": 2,
-    "fields": {
-      "employee": 2,
-      "leave_type": "Sick",
-      "from_date": "2026-07-10",
-      "to_date": "2026-07-12",
-      "reason": "Fever",
-      "status": "Approved"
-    }
-  },
-  {
-    "model": "leaves.leave",
-    "pk": 3,
-    "fields": {
-      "employee": 3,
-      "leave_type": "Earned",
-      "from_date": "2026-08-01",
-      "to_date": "2026-08-05",
-      "reason": "Vacation",
-      "status": "Rejected"
-    }
-  }
+  
+  {"model": "employees.employee", "pk": 1, "fields": {"employee_id": "EMP101", "name": "Rahul Sharma", "email": "rahul.sharma@example.com", "department": "IT", "mobile_number": "9876543210", "date_of_joining": "2024-01-15"}},
+  {"model": "employees.employee", "pk": 2, "fields": {"employee_id": "EMP102", "name": "Priya Singh", "email": "priya.singh@example.com", "department": "HR", "mobile_number": "9876543211", "date_of_joining": "2024-02-10"}},
+  {"model": "employees.employee", "pk": 3, "fields": {"employee_id": "EMP103", "name": "Amit Kumar", "email": "amit.kumar@example.com", "department": "Sales", "mobile_number": "9876543212", "date_of_joining": "2024-03-05"}},
+  {"model": "employees.employee", "pk": 4, "fields": {"employee_id": "EMP104", "name": "Sneha Patel", "email": "sneha.patel@example.com", "department": "Finance", "mobile_number": "9876543213", "date_of_joining": "2024-01-22"}},
+  {"model": "employees.employee", "pk": 5, "fields": {"employee_id": "EMP105", "name": "Vikram Rao", "email": "vikram.rao@example.com", "department": "Marketing", "mobile_number": "9876543214", "date_of_joining": "2024-04-11"}},
+  {"model": "employees.employee", "pk": 6, "fields": {"employee_id": "EMP106", "name": "Anjali Mehta", "email": "anjali.mehta@example.com", "department": "IT", "mobile_number": "9876543215", "date_of_joining": "2024-02-28"}},
+  {"model": "employees.employee", "pk": 7, "fields": {"employee_id": "EMP107", "name": "Karan Gupta", "email": "karan.gupta@example.com", "department": "HR", "mobile_number": "9876543216", "date_of_joining": "2024-05-19"}},
+  {"model": "employees.employee", "pk": 8, "fields": {"employee_id": "EMP108", "name": "Neha Verma", "email": "neha.verma@example.com", "department": "Sales", "mobile_number": "9876543217", "date_of_joining": "2024-03-30"}},
+  {"model": "employees.employee", "pk": 9, "fields": {"employee_id": "EMP109", "name": "Arjun Nair", "email": "arjun.nair@example.com", "department": "Finance", "mobile_number": "9876543218", "date_of_joining": "2024-06-01"}},
+  {"model": "employees.employee", "pk": 10, "fields": {"employee_id": "EMP110", "name": "Divya Iyer", "email": "divya.iyer@example.com", "department": "Marketing", "mobile_number": "9876543219", "date_of_joining": "2024-01-08"}},
+  {"model": "employees.employee", "pk": 11, "fields": {"employee_id": "EMP111", "name": "Rohan Joshi", "email": "rohan.joshi@example.com", "department": "IT", "mobile_number": "9876543220", "date_of_joining": "2024-07-14"}},
+  {"model": "employees.employee", "pk": 12, "fields": {"employee_id": "EMP112", "name": "Pooja Reddy", "email": "pooja.reddy@example.com", "department": "HR", "mobile_number": "9876543221", "date_of_joining": "2024-02-17"}},
+  {"model": "employees.employee", "pk": 13, "fields": {"employee_id": "EMP113", "name": "Manish Yadav", "email": "manish.yadav@example.com", "department": "Sales", "mobile_number": "9876543222", "date_of_joining": "2024-04-25"}},
+  {"model": "employees.employee", "pk": 14, "fields": {"employee_id": "EMP114", "name": "Kavita Desai", "email": "kavita.desai@example.com", "department": "Finance", "mobile_number": "9876543223", "date_of_joining": "2024-03-12"}},
+  {"model": "employees.employee", "pk": 15, "fields": {"employee_id": "EMP115", "name": "Suresh Pillai", "email": "suresh.pillai@example.com", "department": "Marketing", "mobile_number": "9876543224", "date_of_joining": "2024-05-06"}},
+  {"model": "employees.employee", "pk": 16, "fields": {"employee_id": "EMP116", "name": "Meera Kapoor", "email": "meera.kapoor@example.com", "department": "IT", "mobile_number": "9876543225", "date_of_joining": "2024-06-20"}},
+  {"model": "employees.employee", "pk": 17, "fields": {"employee_id": "EMP117", "name": "Aditya Bansal", "email": "aditya.bansal@example.com", "department": "HR", "mobile_number": "9876543226", "date_of_joining": "2024-01-30"}},
+  {"model": "employees.employee", "pk": 18, "fields": {"employee_id": "EMP118", "name": "Ritu Chawla", "email": "ritu.chawla@example.com", "department": "Sales", "mobile_number": "9876543227", "date_of_joining": "2024-04-03"}},
+  {"model": "employees.employee", "pk": 19, "fields": {"employee_id": "EMP119", "name": "Deepak Malhotra", "email": "deepak.malhotra@example.com", "department": "Finance", "mobile_number": "9876543228", "date_of_joining": "2024-02-14"}},
+  {"model": "employees.employee", "pk": 20, "fields": {"employee_id": "EMP120", "name": "Shalini Rathi", "email": "shalini.rathi@example.com", "department": "Marketing", "mobile_number": "9876543229", "date_of_joining": "2024-05-27"}},
+
+  {"model": "leaves.leave", "pk": 1, "fields": {"employee": 1, "leave_type": "Casual", "from_date": "2026-07-15", "to_date": "2026-07-17", "reason": "Family function", "status": "Pending"}},
+  {"model": "leaves.leave", "pk": 2, "fields": {"employee": 2, "leave_type": "Sick", "from_date": "2026-07-10", "to_date": "2026-07-12", "reason": "Fever", "status": "Approved"}},
+  {"model": "leaves.leave", "pk": 3, "fields": {"employee": 3, "leave_type": "Earned", "from_date": "2026-08-01", "to_date": "2026-08-05", "reason": "Vacation", "status": "Rejected"}},
+  {"model": "leaves.leave", "pk": 4, "fields": {"employee": 4, "leave_type": "Casual", "from_date": "2026-07-20", "to_date": "2026-07-21", "reason": "Personal work", "status": "Pending"}},
+  {"model": "leaves.leave", "pk": 5, "fields": {"employee": 5, "leave_type": "Sick", "from_date": "2026-07-05", "to_date": "2026-07-07", "reason": "Cold and cough", "status": "Approved"}},
+  {"model": "leaves.leave", "pk": 6, "fields": {"employee": 6, "leave_type": "Earned", "from_date": "2026-09-01", "to_date": "2026-09-04", "reason": "Trip with family", "status": "Pending"}},
+  {"model": "leaves.leave", "pk": 7, "fields": {"employee": 7, "leave_type": "Casual", "from_date": "2026-07-18", "to_date": "2026-07-18", "reason": "Bank work", "status": "Approved"}},
+  {"model": "leaves.leave", "pk": 8, "fields": {"employee": 8, "leave_type": "Sick", "from_date": "2026-07-22", "to_date": "2026-07-24", "reason": "Stomach infection", "status": "Rejected"}},
+  {"model": "leaves.leave", "pk": 9, "fields": {"employee": 9, "leave_type": "Earned", "from_date": "2026-08-10", "to_date": "2026-08-14", "reason": "Wedding", "status": "Pending"}},
+  {"model": "leaves.leave", "pk": 10, "fields": {"employee": 10, "leave_type": "Casual", "from_date": "2026-07-25", "to_date": "2026-07-26", "reason": "House shifting", "status": "Approved"}},
+  {"model": "leaves.leave", "pk": 11, "fields": {"employee": 11, "leave_type": "Sick", "from_date": "2026-07-11", "to_date": "2026-07-13", "reason": "Migraine", "status": "Pending"}},
+  {"model": "leaves.leave", "pk": 12, "fields": {"employee": 12, "leave_type": "Earned", "from_date": "2026-08-20", "to_date": "2026-08-23", "reason": "Vacation with kids", "status": "Approved"}},
+  {"model": "leaves.leave", "pk": 13, "fields": {"employee": 13, "leave_type": "Casual", "from_date": "2026-07-19", "to_date": "2026-07-19", "reason": "Doctor appointment", "status": "Rejected"}},
+  {"model": "leaves.leave", "pk": 14, "fields": {"employee": 14, "leave_type": "Sick", "from_date": "2026-07-08", "to_date": "2026-07-09", "reason": "Viral fever", "status": "Approved"}},
+  {"model": "leaves.leave", "pk": 15, "fields": {"employee": 15, "leave_type": "Earned", "from_date": "2026-09-05", "to_date": "2026-09-09", "reason": "Native place visit", "status": "Pending"}},
+  {"model": "leaves.leave", "pk": 16, "fields": {"employee": 16, "leave_type": "Casual", "from_date": "2026-07-16", "to_date": "2026-07-16", "reason": "Personal reason", "status": "Approved"}},
+  {"model": "leaves.leave", "pk": 17, "fields": {"employee": 17, "leave_type": "Sick", "from_date": "2026-07-27", "to_date": "2026-07-29", "reason": "Food poisoning", "status": "Pending"}},
+  {"model": "leaves.leave", "pk": 18, "fields": {"employee": 18, "leave_type": "Earned", "from_date": "2026-08-15", "to_date": "2026-08-18", "reason": "Family trip", "status": "Rejected"}},
+  {"model": "leaves.leave", "pk": 19, "fields": {"employee": 19, "leave_type": "Casual", "from_date": "2026-07-30", "to_date": "2026-07-31", "reason": "Festival", "status": "Approved"}},
+  {"model": "leaves.leave", "pk": 20, "fields": {"employee": 20, "leave_type": "Sick", "from_date": "2026-07-14", "to_date": "2026-07-15", "reason": "Body pain", "status": "Pending"}},
+  {"model": "leaves.leave", "pk": 21, "fields": {"employee": 1, "leave_type": "Earned", "from_date": "2026-10-01", "to_date": "2026-10-05", "reason": "Diwali vacation", "status": "Approved"}},
+  {"model": "leaves.leave", "pk": 22, "fields": {"employee": 3, "leave_type": "Casual", "from_date": "2026-07-21", "to_date": "2026-07-21", "reason": "Exam", "status": "Pending"}},
+  {"model": "leaves.leave", "pk": 23, "fields": {"employee": 5, "leave_type": "Sick", "from_date": "2026-07-23", "to_date": "2026-07-25", "reason": "Injury", "status": "Rejected"}},
+  {"model": "leaves.leave", "pk": 24, "fields": {"employee": 8, "leave_type": "Earned", "from_date": "2026-09-15", "to_date": "2026-09-18", "reason": "Sister's wedding", "status": "Approved"}},
+  {"model": "leaves.leave", "pk": 25, "fields": {"employee": 12, "leave_type": "Casual", "from_date": "2026-07-28", "to_date": "2026-07-28", "reason": "Home repair work", "status": "Pending"}}
+
 ]
