@@ -1,25 +1,32 @@
 {% extends 'base.html' %}
 {% block title %}Login{% endblock %}
 {% block content %}
-<div class="d-flex justify-content-center align-items-center" style="min-height: 70vh;">
-    <div class="card shadow-sm" style="width: 100%; max-width: 400px;">
-        <div class="card-body p-4">
-            <h3 class="text-center mb-4">Login</h3>
+<div class="d-flex justify-content-center align-items-center" style="min-height: 75vh;">
+    <div class="card shadow border-0" style="width: 100%; max-width: 420px; border-radius: 12px;">
+        <div class="card-body p-5">
+            <div class="text-center mb-4">
+                <div style="font-size:2.5rem;">🔐</div>
+                <h3 class="mt-2 mb-1">Welcome Back</h3>
+                <p class="text-muted" style="font-size:0.9rem;">Login to Leave Management System</p>
+            </div>
             {% if form.errors %}
-            <div class="alert alert-danger">Invalid username or password.</div>
+            <div class="alert alert-danger py-2" style="font-size:0.9rem;">Invalid username or password.</div>
             {% endif %}
             <form method="POST">
                 {% csrf_token %}
                 <div class="mb-3">
-                    <label class="form-label">Username</label>
+                    <label class="form-label small text-muted">Username</label>
                     {{ form.username }}
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Password</label>
+                <div class="mb-4">
+                    <label class="form-label small text-muted">Password</label>
                     {{ form.password }}
                 </div>
-                <button type="submit" class="btn btn-primary w-100">Login</button>
+                <button type="submit" class="btn btn-primary w-100 py-2" style="border-radius:8px;">Login</button>
             </form>
+            <p class="text-center mt-4 mb-0" style="font-size:0.9rem;">
+                Don't have an account? <a href="{% url 'signup' %}" class="text-decoration-none fw-bold">Sign up</a>
+            </p>
         </div>
     </div>
 </div>

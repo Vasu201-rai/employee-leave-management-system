@@ -1,37 +1,89 @@
 {% extends 'base.html' %}
 {% block title %}Dashboard{% endblock %}
 {% block content %}
-<h1>Leave Management Dashboard</h1>
-<div class="row mt-4">
-    <div class="col-md-2">
-        <div class="card text-center p-3 bg-light">
-            <h5>Total Employees</h5>
-            <h2>{{ total_employees }}</h2>
+<h1 class="mb-4">📊 Leave Management Dashboard</h1>
+
+<div class="row g-3">
+    <div class="col-md-2 col-sm-4 col-6">
+        <div class="card text-center p-3 shadow-sm border-0" style="background:#eef2ff;">
+            <div style="font-size:1.8rem;">👥</div>
+            <h6 class="text-muted">Total Employees</h6>
+            <h3>{{ total_employees }}</h3>
         </div>
     </div>
-    <div class="col-md-2">
-        <div class="card text-center p-3 bg-light">
-            <h5>Total Leaves</h5>
-            <h2>{{ total_leaves }}</h2>
+    <div class="col-md-2 col-sm-4 col-6">
+        <div class="card text-center p-3 shadow-sm border-0" style="background:#f0f9ff;">
+            <div style="font-size:1.8rem;">📄</div>
+            <h6 class="text-muted">Total Leaves</h6>
+            <h3>{{ total_leaves }}</h3>
         </div>
     </div>
-    <div class="col-md-2">
-        <div class="card text-center p-3 bg-warning">
-            <h5>Pending</h5>
-            <h2>{{ pending_count }}</h2>
+    <div class="col-md-2 col-sm-4 col-6">
+        <div class="card text-center p-3 shadow-sm border-0" style="background:#fff7ed;">
+            <div style="font-size:1.8rem;">⏳</div>
+            <h6 class="text-muted">Pending</h6>
+            <h3>{{ pending_count }}</h3>
         </div>
     </div>
-    <div class="col-md-2">
-        <div class="card text-center p-3 bg-success text-white">
-            <h5>Approved</h5>
-            <h2>{{ approved_count }}</h2>
+    <div class="col-md-2 col-sm-4 col-6">
+        <div class="card text-center p-3 shadow-sm border-0" style="background:#f0fdf4;">
+            <div style="font-size:1.8rem;">✅</div>
+            <h6 class="text-muted">Approved</h6>
+            <h3>{{ approved_count }}</h3>
         </div>
     </div>
-    <div class="col-md-2">
-        <div class="card text-center p-3 bg-danger text-white">
-            <h5>Rejected</h5>
-            <h2>{{ rejected_count }}</h2>
+    <div class="col-md-2 col-sm-4 col-6">
+        <div class="card text-center p-3 shadow-sm border-0" style="background:#fef2f2;">
+            <div style="font-size:1.8rem;">❌</div>
+            <h6 class="text-muted">Rejected</h6>
+            <h3>{{ rejected_count }}</h3>
         </div>
     </div>
 </div>
+
+<div class="row mt-5">
+    <div class="col-md-6">
+        <div class="card shadow-sm p-3">
+            <h5 class="mb-3">Department-wise Employees</h5>
+            <canvas id="empChart"></canvas>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow-sm p-3">
+            <h5 class="mb-3">Department-wise Leave Applications</h5>
+            <canvas id="leaveChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const empCtx = document.getElementById('empChart');
+    new Chart(empCtx, {
+        type: 'bar',
+        data: {
+            labels: {{ dept_labels|safe }},
+            datasets: [{
+                label: 'Employees',
+                data: {{ dept_emp_counts|safe }},
+                backgroundColor: '#6366f1'
+            }]
+        },
+        options: { plugins: { legend: { display: false } } }
+    });
+
+    const leaveCtx = document.getElementById('leaveChart');
+    new Chart(leaveCtx, {
+        type: 'bar',
+        data: {
+            labels: {{ dept_leave_labels|safe }},
+            datasets: [{
+                label: 'Leaves',
+                data: {{ dept_leave_counts|safe }},
+                backgroundColor: '#f97316'
+            }]
+        },
+        options: { plugins: { legend: { display: false } } }
+    });
+</script>
 {% endblock %}

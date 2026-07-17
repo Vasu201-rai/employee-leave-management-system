@@ -15,20 +15,23 @@ from django.core.paginator import Paginator
 
 @login_required
 def employee_list(request):
-    query = request.GET.get('q', '')
-    employees = Employee.objects.all()
+    if not request.user.is_staff:
+        # Normal user - sirf apna profile
+        employees = Employee.objects.filter(user=request.user)
+    else:
+        # Staff/Admin - sab dikhe
+        query = request.GET.get('q', '')
+        employees = Employee.objects.all()
+        if query:
+            employees = employees.filter(
+                models.Q(name__icontains=query) | models.Q(employee_id__icontains=query)
+            )
 
-    if query:
-        employees = employees.filter(
-            models.Q(name__icontains=query) | models.Q(employee_id__icontains=query)
-        )
-
-    paginator = Paginator(employees, 5)  # 5 employees per page
+    paginator = Paginator(employees, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    return render(request, 'employees/employee_list.html', {'employees': page_obj, 'query': query})
-
+    return render(request, 'employees/employee_list.html', {'employees': page_obj, 'query': request.GET.get('q', '')})
 
 @login_required
 def employee_add(request):

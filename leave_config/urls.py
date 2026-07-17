@@ -20,11 +20,36 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.forms import AuthenticationForm
 from django import forms
-
+from django.contrib.auth.forms import UserCreationForm
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+from django.utils import timezone
 
 class StyledAuthenticationForm(AuthenticationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
     password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    
+from django.contrib.auth.forms import UserCreationForm
+from employees.models import Employee
+
+class SignupView(CreateView):
+    form_class = UserCreationForm
+    template_name = 'registration/signup.html'
+    success_url = reverse_lazy('login')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        user = self.object
+        Employee.objects.create(
+            user=user,
+            employee_id=f'EMP{user.id + 1000}',
+            name=user.username,
+            email=f'{user.username}@example.com',
+            department='Not Assigned',
+            mobile_number='0000000000',
+            date_of_joining=timezone.now().date()
+        )
+        return response
 
 
 urlpatterns = [
@@ -34,4 +59,12 @@ urlpatterns = [
     path('', include('dashboard.urls')),
     path('employees/', include('employees.urls')),
     path('leaves/', include('leaves.urls')),
+    path('signup/', SignupView.as_view(), name='signup'),
+    
+    
+    
+    
 ]
+
+
+
